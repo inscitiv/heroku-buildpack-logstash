@@ -10,6 +10,10 @@ class LanguagePack::Logstash < LanguagePack::Ruby
     File.exist?("logstash.conf")
   end
 
+  def ruby_version
+    "ruby-1.9.3"
+  end
+
   def name
     "Ruby/Logstash"
   end
