@@ -7,7 +7,7 @@ class LanguagePack::Logstash < LanguagePack::Ruby
   # detects if this is a valid Rack app by seeing if "config.ru" exists
   # @return [Boolean] true if it's a Rack app
   def self.use?
-    super && File.exist?("logstash.conf")
+    File.exist?("logstash.conf")
   end
 
   def name
@@ -37,8 +37,12 @@ class LanguagePack::Logstash < LanguagePack::Ruby
     end
   end
 
+  # Add a redis2go instance
+  def default_addons
+    add_shared_database_addon + [ "redistogo:nano" ]
+  end
+
   protected
-  
   
   def fetch_logstash
     run("git clone --depth 1 https://github.com/logstash/logstash.git .")
