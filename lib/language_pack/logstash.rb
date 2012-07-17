@@ -26,6 +26,7 @@ class LanguagePack::Logstash < LanguagePack::Ruby
   end
 
   def compile
+    log("Changing to #{build_path}")
     Dir.chdir(build_path)
     remove_vendor_bundle
     install_ruby
