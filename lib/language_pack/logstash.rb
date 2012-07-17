@@ -49,7 +49,10 @@ class LanguagePack::Logstash < LanguagePack::Ruby
   protected
   
   def fetch_logstash
-    run("git clone --depth 1 https://github.com/logstash/logstash.git .")
+    log("fetch logstash") do
+      run("git clone --depth 1 https://github.com/logstash/logstash.git .")
+      log("fetch logstash", Dir['*'].sort.join("\n"))
+    end
   end
   
 end
