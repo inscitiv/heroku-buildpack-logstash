@@ -20,7 +20,7 @@ class LanguagePack::Logstash < LanguagePack::Ruby
 
   def default_process_types
     {
-      "worker"  => "bundle exec bin/logstash agent -c logstash.conf",
+      "worker"  => "bundle exec bin/logstash agent -c logstash.conf --pluginpath lib",
       "console" => "bundle exec irb"
     }
   end
