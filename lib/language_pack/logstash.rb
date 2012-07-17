@@ -26,14 +26,14 @@ class LanguagePack::Logstash < LanguagePack::Ruby
   end
 
   def compile
-    log("Changing to #{build_path}")
+    log("Changing to dir #{build_path}")
     Dir.chdir(build_path)
     remove_vendor_bundle
     install_ruby
     install_jvm
     setup_language_pack_environment
+    fetch_logstash
     allow_git do
-      fetch_logstash
       install_language_pack_gems
       build_bundler
       create_database_yml
