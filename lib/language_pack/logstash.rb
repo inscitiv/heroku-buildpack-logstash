@@ -51,8 +51,7 @@ class LanguagePack::Logstash < LanguagePack::Ruby
   
   def fetch_logstash
     log("fetch logstash") do
-      run("git clone --depth 1 https://github.com/logstash/logstash.git .")
-      log("fetch logstash", Dir['*'].sort.join("\n"))
+      pipe("curl https://github.com/logstash/logstash/tarball/master -s -o - | tar xzf -")
     end
   end
   
