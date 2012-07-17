@@ -52,6 +52,10 @@ class LanguagePack::Logstash < LanguagePack::Ruby
   def fetch_logstash
     log("fetch logstash") do
       pipe("curl https://github.com/logstash/logstash/tarball/master -L -o - | tar xzf -")
+      puts Dir["*"]
+      fetch_dir = Dir['logstash-*'][0]
+      run("mv #{fetch_dir}/* .")
+      run("rmdir #{fetch_dir}")
     end
   end
   
