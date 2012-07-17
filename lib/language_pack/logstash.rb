@@ -51,7 +51,7 @@ class LanguagePack::Logstash < LanguagePack::Ruby
   
   def fetch_logstash
     log("fetch logstash") do
-      pipe("curl https://github.com/logstash/logstash/tarball/master -s -o - | tar xzf -")
+      pipe("curl https://github.com/logstash/logstash/tarball/master -L -o - | tar xzf -")
     end
   end
   
